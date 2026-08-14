@@ -1,0 +1,122 @@
+backend:
+  name: github
+  repo: vknmurm-star/finance-001
+  branch: main
+  base_url: https://finance.an51.su
+  auth_endpoint: api/auth
+
+# Локальная разработка: запустите `npx decap-server` в отдельном терминале,
+# и админка будет писать файлы прямо на диск — без GitHub и без OAuth.
+local_backend: true
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "articles"
+    label: "Статьи"
+    folder: "content/articles"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "mdx"
+    format: "frontmatter"
+    identifier_field: "title"
+    fields:
+      - { label: "Заголовок", name: "title", widget: "string" }
+      - { label: "Описание (для карточек и SEO)", name: "description", widget: "text" }
+      - label: "Категория"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "Бюджет", value: "budget" }
+          - { label: "Накопления", value: "savings" }
+          - { label: "Долги", value: "debts" }
+          - { label: "Привычки", value: "habits" }
+      - { label: "Теги", name: "tags", widget: "list" }
+      - { label: "Дата публикации", name: "date", widget: "datetime" }
+      - { label: "Подпись на плейсхолдере обложки (если нет фото)", name: "coverLabel", widget: "string" }
+      - { label: "Фото обложки", name: "coverImage", widget: "image", required: false }
+      - label: "Alt-текст фото (что именно на фото — для SEO и доступности)"
+        name: "coverImageAlt"
+        widget: "string"
+        required: false
+      - label: "SEO-заголовок (до ~60 символов, если отличается от основного)"
+        name: "seoTitle"
+        widget: "string"
+        required: false
+        hint: "Показывается в <title> и результатах поиска. Оставьте пустым, чтобы использовать основной заголовок."
+      - label: "SEO-описание (120–160 символов)"
+        name: "seoDescription"
+        widget: "text"
+        required: false
+        hint: "Показывается в результатах поиска. Оставьте пустым, чтобы использовать «Описание» выше."
+      - { label: "Текст статьи", name: "body", widget: "markdown" }
+      - label: "Заголовок пошаговой инструкции (HowTo)"
+        name: "howToTitle"
+        widget: "string"
+        required: false
+        hint: "Заполняйте вместе с полем «Шаги» ниже — только если в статье есть чёткий пошаговый алгоритм."
+      - label: "Шаги (HowTo)"
+        name: "howTo"
+        widget: "list"
+        required: false
+
+  - name: "categories"
+    label: "Категории"
+    files:
+      - file: "content/categories.json"
+        label: "Список категорий"
+        name: "categories"
+        fields:
+          - label: "Категории"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - label: "Slug"
+                name: "slug"
+                widget: "select"
+                options:
+                  - { label: "Бюджет", value: "budget" }
+                  - { label: "Накопления", value: "savings" }
+                  - { label: "Долги", value: "debts" }
+                  - { label: "Привычки", value: "habits" }
+              - { label: "Название (полное)", name: "title", widget: "string" }
+              - { label: "Название (короткое, для меню)", name: "shortTitle", widget: "string" }
+              - { label: "Описание", name: "description", widget: "text" }
+              - label: "Акцентный цвет"
+                name: "accent"
+                widget: "select"
+                options:
+                  - { label: "Бирюзовый", value: "teal" }
+                  - { label: "Зелёный", value: "green" }
+                  - { label: "Янтарный", value: "amber" }
+                  - { label: "Индиго", value: "indigo" }
+
+  - name: "about"
+    label: "Страница «О проекте»"
+    files:
+      - file: "content/pages/about.mdx"
+        label: "О проекте"
+        name: "about"
+        fields:
+          - { label: "Заголовок", name: "title", widget: "string" }
+          - { label: "Текст страницы", name: "body", widget: "markdown" }
+
+  - name: "homepage"
+    label: "Главная страница"
+    files:
+      - file: "content/settings/homepage.json"
+        label: "Хиро-блок"
+        name: "homepage"
+        fields:
+          - { label: "Надпись над заголовком", name: "eyebrow", widget: "string" }
+          - { label: "Заголовок", name: "heading", widget: "string" }
+          - { label: "Подзаголовок", name: "subheading", widget: "text" }
+          - { label: "Текст основной кнопки", name: "primaryCtaLabel", widget: "string" }
+          - { label: "Ссылка основной кнопки", name: "primaryCtaHref", widget: "string" }
+          - { label: "Текст второй кнопки", name: "secondaryCtaLabel", widget: "string" }
+          - { label: "Ссылка второй кнопки", name: "secondaryCtaHref", widget: "string" }
+          - { label: "Текст в значке", name: "badgeText", widget: "string" }
+          - { label: "Подпись под значком", name: "badgeSubtext", widget: "string" }

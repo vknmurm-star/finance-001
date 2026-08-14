@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "slug": "budget",
+      "title": "Бюджет",
+      "shortTitle": "Бюджет",
+      "description": "Учёт расходов и доходов, планирование трат без мучительных таблиц.",
+      "accent": "teal"
+    },
+    {
+      "slug": "savings",
+      "title": "Накопления",
+      "shortTitle": "Накопления",
+      "description": "Подушка безопасности, финансовые цели и привычка откладывать.",
+      "accent": "green"
+    },
+    {
+      "slug": "debts",
+      "title": "Долги",
+      "shortTitle": "Долги",
+      "description": "Как разобраться с кредитами и задолженностями без паники.",
+      "accent": "amber"
+    },
+    {
+      "slug": "habits",
+      "title": "Привычки",
+      "shortTitle": "Привычки",
+      "description": "Финансовое мышление и маленькие практики на каждый день.",
+      "accent": "indigo"
+    }
+  ]
+}
