@@ -73,7 +73,7 @@ export default function HomePage() {
             <div className="absolute inset-20 flex items-center justify-center rounded-full bg-white/5 backdrop-blur">
               <span className="text-center text-2xl font-bold text-white">
                 {homepage.badgeText}
-                <span className="mt-1 block text-center text-sm font-normal text-white/70">
+                <span className="mt-1 block text-center text-base font-normal text-white/70">
                   {homepage.badgeSubtext}
                 </span>
               </span>
