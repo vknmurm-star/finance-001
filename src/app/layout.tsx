@@ -24,6 +24,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  verification: {
+    yandex: "213357e3e715970a",
+  },
 };
 
 const organizationJsonLd = {
